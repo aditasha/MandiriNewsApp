@@ -1,3 +1,5 @@
+package com.aditasha.mandirinewsapp.adapter
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -5,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.request.ImageRequest
 import com.aditasha.mandirinewsapp.R
-import com.aditasha.mandirinewsapp.databinding.RecyclerHeaderBinding
+import com.aditasha.mandirinewsapp.databinding.RecyclerItemBinding
 import com.aditasha.mandirinewsapp.model.ArticlesItem
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class HeaderAdapter() :
-    RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
+class NewsAdapter() :
+    RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     private var data = arrayListOf<ArticlesItem>()
 
     fun setData(articles: List<ArticlesItem>) {
@@ -23,7 +25,7 @@ class HeaderAdapter() :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = RecyclerHeaderBinding.inflate(inflater)
+        val binding = RecyclerItemBinding.inflate(inflater)
         return ViewHolder(binding)
     }
 
@@ -32,7 +34,7 @@ class HeaderAdapter() :
     }
 
     override fun getItemCount() = data.size
-    class ViewHolder(private val binding: RecyclerHeaderBinding) :
+    class ViewHolder(private val binding: RecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         var input = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.getDefault())
         var output = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
@@ -52,7 +54,8 @@ class HeaderAdapter() :
                 .target(
                     onStart = { _ ->
                         binding.headerImage.setImageDrawable(null)
-                        binding.loading.visibility = View.VISIBLE },
+                        binding.loading.visibility = View.VISIBLE
+                    },
                     onSuccess = { drawable ->
                         binding.loading.visibility = View.INVISIBLE
                         binding.headerImage.setImageDrawable(drawable)

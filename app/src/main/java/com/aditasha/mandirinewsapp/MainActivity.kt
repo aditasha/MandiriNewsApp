@@ -1,10 +1,11 @@
 package com.aditasha.mandirinewsapp
 
-import HeaderAdapter
-import NewsAdapter
+import com.aditasha.mandirinewsapp.adapter.HeaderAdapter
+import com.aditasha.mandirinewsapp.adapter.NewsAdapter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.aditasha.mandirinewsapp.databinding.ActivityMainBinding
+import com.aditasha.mandirinewsapp.network.CallAPI
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

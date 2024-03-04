@@ -1,10 +1,9 @@
-package com.aditasha.mandirinewsapp
+package com.aditasha.mandirinewsapp.network
 
-import HeaderAdapter
-import NewsAdapter
+import com.aditasha.mandirinewsapp.adapter.HeaderAdapter
+import com.aditasha.mandirinewsapp.adapter.NewsAdapter
 import android.util.Log
 import com.aditasha.mandirinewsapp.model.News
-import com.aditasha.mandirinewsapp.network.ApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
