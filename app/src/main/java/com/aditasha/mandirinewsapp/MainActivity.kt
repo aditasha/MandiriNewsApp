@@ -4,7 +4,6 @@ import HeaderAdapter
 import NewsAdapter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.ConcatAdapter
 import com.aditasha.mandirinewsapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         // Set adapter
         val headerAdapter = HeaderAdapter()
         val newsAdapter = NewsAdapter()
-        val concatAdapter = ConcatAdapter(headerAdapter, newsAdapter)
-        binding.recycler.adapter = concatAdapter
+        binding.header.adapter = headerAdapter
+        binding.news.adapter = newsAdapter
 
         // API call
         val api = CallAPI.getInstance()

@@ -38,7 +38,7 @@ class CallAPI private constructor() {
                 if (response.isSuccessful) {
                     val post = response.body()
                     val articles = post?.articles
-                    articles?.get(0)?.let {
+                    articles?.let {
                         adapter.setData(it)
                     }
                 } else {

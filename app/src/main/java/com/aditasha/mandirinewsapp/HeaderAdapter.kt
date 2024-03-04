@@ -13,16 +13,12 @@ import java.util.Locale
 
 class HeaderAdapter() :
     RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
-    private val data = arrayListOf<ArticlesItem>()
+    private var data = arrayListOf<ArticlesItem>()
 
-    fun setData(articlesItem: ArticlesItem) {
-        if (data.size == 0) {
-            data.add(articlesItem)
-            notifyDataSetChanged()
-        } else {
-            data[0] = articlesItem
-            notifyItemChanged(0)
-        }
+    fun setData(articles: List<ArticlesItem>) {
+        data = arrayListOf<ArticlesItem>().apply { addAll(articles) }
+        notifyDataSetChanged()
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -54,7 +50,9 @@ class HeaderAdapter() :
                 .crossfade(true)
                 .fallback(R.drawable.bmri_light)
                 .target(
-                    onStart = { _ -> binding.loading.visibility = View.VISIBLE },
+                    onStart = { _ ->
+                        binding.headerImage.setImageDrawable(null)
+                        binding.loading.visibility = View.VISIBLE },
                     onSuccess = { drawable ->
                         binding.loading.visibility = View.INVISIBLE
                         binding.headerImage.setImageDrawable(drawable)
